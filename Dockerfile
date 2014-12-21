@@ -25,9 +25,6 @@ ENV PETSC_ARCH arch-linux2-c-debug
 
 WORKDIR $PETSC_DIR
 
-# https://github.com/dotcloud/docker/issues/2637
-#WORKDIR /opt/petsc-3.4.4
-
 # Configure and build PETSc.
 RUN ./configure
 #  --with-mpi=0 \

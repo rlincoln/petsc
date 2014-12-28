@@ -7,7 +7,7 @@ MAINTAINER Richard Lincoln, r.w.lincoln@gmail.com
 # http://www.mcs.anl.gov/petsc/download/
 # http://www.mcs.anl.gov/research/projects/tao/download/
 # http://www.grycap.upv.es/slepc/download/
-ENV PETSC_VERSION 3.4
+ENV PETSC_VERSION 3.4.5
 ENV SLEPC_VERSION 3.5.3
 ENV TAO_VERSION 2.2.2
 
@@ -27,7 +27,10 @@ RUN gunzip -c petsc-lite-$PETSC_VERSION.tar.gz | tar -xof -
 ENV PETSC_DIR /opt/petsc-$PETSC_VERSION
 ENV PETSC_ARCH arch-linux2-c-debug
 
-WORKDIR $PETSC_DIR
+#WORKDIR $PETSC_DIR
+
+# https://github.com/dotcloud/docker/issues/2637
+WORKDIR /opt/petsc-3.4.5
 
 # Configure and build PETSc.
 RUN ./configure

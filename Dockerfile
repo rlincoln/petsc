@@ -8,8 +8,8 @@ MAINTAINER Richard Lincoln, r.w.lincoln@gmail.com
 # http://www.mcs.anl.gov/research/projects/tao/download/
 # http://www.grycap.upv.es/slepc/download/
 ENV PETSC_VERSION 3.4.5
-ENV SLEPC_VERSION 3.5.3
 ENV TAO_VERSION 2.2.2
+ENV SLEPC_VERSION 3.4.4
 
 RUN apt-get update
 

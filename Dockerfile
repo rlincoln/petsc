@@ -27,10 +27,7 @@ RUN gunzip -c petsc-lite-$PETSC_VERSION.tar.gz | tar -xof -
 ENV PETSC_DIR /opt/petsc-$PETSC_VERSION
 ENV PETSC_ARCH arch-linux2-c-debug
 
-#WORKDIR $PETSC_DIR
-
-# https://github.com/dotcloud/docker/issues/2637
-WORKDIR /opt/petsc-3.4.5
+WORKDIR $PETSC_DIR
 
 # Configure and build PETSc.
 RUN ./configure

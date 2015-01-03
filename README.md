@@ -1,7 +1,7 @@
 PETSc Docker Image
 ==================
 
-[Docker][docker] image for [PETSc][petsc], [TAO][tao] and [SLEPc][slepc].
+[Docker][docker] image for [PETSc][petsc] and [SLEPc][slepc].
 
 Build
 -----
@@ -29,6 +29,5 @@ Derive your image from `rlincoln/petsc` and use the environment variables:
 
 [docker]: https://www.docker.com/
 [petsc]: http://www.mcs.anl.gov/petsc/
-[tao]: http://www.mcs.anl.gov/research/projects/tao/
 [slepc]: http://www.grycap.upv.es/slepc/
 

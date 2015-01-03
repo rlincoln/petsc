@@ -2,14 +2,12 @@ FROM debian:stable
 
 MAINTAINER Richard Lincoln, r.w.lincoln@gmail.com
 
-# Select the latest stable releases of PETSc, SLEPc and TAO.
+# Select the latest stable releases of PETSc and SLEPc.
 #
 # http://www.mcs.anl.gov/petsc/download/
-# http://www.mcs.anl.gov/research/projects/tao/download/
 # http://www.grycap.upv.es/slepc/download/
-ENV PETSC_VERSION 3.4.5
-ENV TAO_VERSION 2.2.2
-ENV SLEPC_VERSION 3.4.4
+ENV PETSC_VERSION 3.5.2
+ENV SLEPC_VERSION 3.5.3
 
 RUN apt-get update
 
@@ -40,19 +38,6 @@ RUN make all
 RUN make test
 
 
-# Download and extract TAO.
-WORKDIR /opt
-RUN wget --no-verbose http://www.mcs.anl.gov/research/projects/tao/download/tao-$TAO_VERSION.tar.gz
-RUN gunzip -c tao-$TAO_VERSION.tar.gz | tar -xof -
-
-ENV TAO_DIR /opt/tao-$TAO_VERSION
-
-# Build and test TAO.
-WORKDIR $TAO_DIR
-RUN make all
-RUN make tao_testexamples
-
-
 # Download and extract SLEPc.
 WORKDIR /opt
 RUN wget --no-verbose http://www.grycap.upv.es/slepc/download/distrib/slepc-$SLEPC_VERSION.tar.gz
@@ -69,6 +54,6 @@ RUN make test
 
 
 # Add the newly compiled libraries to the environment.
-ENV LD_LIBRARY_PATH $PETSC_DIR/$PETSC_ARCH/lib:$TAO_DIR/$PETSC_ARCH/lib:$SLEPC_DIR/$PETSC_ARCH/lib
+ENV LD_LIBRARY_PATH $PETSC_DIR/$PETSC_ARCH/lib:$SLEPC_DIR/$PETSC_ARCH/lib
 ENV PKG_CONFIG_PATH $PETSC_DIR/$PETSC_ARCH/lib/pkgconfig:$SLEPC_DIR/$PETSC_ARCH/lib/pkgconfig
 
